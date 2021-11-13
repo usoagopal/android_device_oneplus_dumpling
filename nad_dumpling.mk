@@ -21,10 +21,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from dumpling device
 $(call inherit-product, device/oneplus/dumpling/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common NusantaraROM stuff.
+$(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
+$(call inherit-product-if-exists, packages/apps/NusantaraParts/nadproject.mk)
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_USES_BLUR := true
+USE_PIXEL_CHARGING := true
+PRODUCT_PACKAGES += \
+    SnapdragonMusic
+USE_AOSP_CLOCK := true
 
-PRODUCT_NAME := lineage_dumpling
+PRODUCT_NAME := nad_dumpling
 PRODUCT_DEVICE := dumpling
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
